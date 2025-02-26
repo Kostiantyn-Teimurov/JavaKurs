@@ -54,6 +54,8 @@ public class Les22Main {
 
         System.out.println("\n===========HomeWork==============\n");
         System.out.println("magic.lastIndexOf(20): " + magic.lastIndexOf(20));
+        System.out.println("magic.removeByValue(2): " + magic.removeByValue(20));
+        magic.test();
 
         int[] numbers = new int[5];
         MagicArray magic2 = new MagicArray(numbers, 0);
@@ -74,7 +76,7 @@ public class Les22Main {
 
         System.out.println("\n====================");
         int[] numbers1 = new int[]{10, 0, 10, 5, 7, 5, 10, 10};
-        MagicArray magic3 = new MagicArray(numbers1, numbers1.length);
+        MagicArray magic3 = new MagicArray(numbers1);
 
         magic3.add(100);
         magic3.test();

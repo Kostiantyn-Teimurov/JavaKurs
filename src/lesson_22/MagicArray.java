@@ -16,7 +16,13 @@ public class MagicArray {
     }
 
     public MagicArray(int[] array) {
-        this.array = array;
+        this.array = new int[array.length];
+        if (array.length > 0) {
+            this.array = array;
+            this.cursor = array.length;
+        } else {
+            this.array = new int[10];
+        }
     }
 
     public MagicArray(int[] array, int cursor) {
@@ -155,6 +161,11 @@ public class MagicArray {
 
     // Удаление по значению
     boolean removeByValue(int value) {
+        return remove(indexOf(value)) == value;
+    }
+
+    // Удаление по значению 2
+    boolean removeByValue2(int value) {
         for (int i = 0; i < cursor; i++) {
             if (array[i] == value) {
                 for (int j = i; j < cursor - 1; j++) {

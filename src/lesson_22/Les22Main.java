@@ -58,7 +58,7 @@ public class Les22Main {
         magic.test();
 
         int[] numbers = new int[5];
-        MagicArray magic2 = new MagicArray(numbers, 0);
+        MagicArray magic2 = new MagicArray(numbers);
 
         magic2.add(1, 2, 7, 3, 2, 2, 3, 4, 5, 2);
 
@@ -78,6 +78,11 @@ public class Les22Main {
         int[] numbers1 = new int[]{10, 0, 10, 5, 7, 5, 10, 10};
         MagicArray magic3 = new MagicArray(numbers1);
 
+//        magic3.add(100);
+        magic3.test();
+        numbers1[1] = 100;
+//        numbers1[1] = 100;
+
         magic3.add(100);
         magic3.test();
 
@@ -85,6 +90,13 @@ public class Les22Main {
         valuesFind = magic3.findAllValues(10);
 
         System.out.println("Число 10 находится по таким индексам: " + Arrays.toString(valuesFind));
+
+
+        System.out.println("==================");
+
+        int[] fromMagic = magic.toArray();
+        System.out.println(fromMagic.length);
+        System.out.println(Arrays.toString(fromMagic));
 
     }
 }

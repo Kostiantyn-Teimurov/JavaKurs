@@ -1,21 +1,20 @@
-package lesson_22;
+package homeworks.homework_22;
 
 import java.util.Arrays;
 
 
-public class MagicArray {
-
+public class MagicArrayEncaps {
     private int[] array; // null
     private int cursor; // по умолчанию = 0
 
 
     // Методы, расширяющие функционал массива
 
-    public MagicArray() {
+    public MagicArrayEncaps() {
         this.array = new int[10];
     }
 
-    public MagicArray(int[] array) {
+    public MagicArrayEncaps(int[] array) {
         if (array == null || array.length == 0) {
             this.array = new int[10];
         } else {
@@ -37,6 +36,7 @@ public class MagicArray {
         cursor++;
     }
 
+    //  СЕКВЕНЦИЯ!!!!!!!!!!! полезно
     // Добавление в массив нескольких элементов
     void add(int... numbers) {
         /*System.out.println("===============Секвенция=========");
@@ -145,6 +145,15 @@ public class MagicArray {
 
     // Индекс последнего вхождения
     int lastIndexOf(int value) {
+        for (int i = cursor - 1; i >= 0; i--) {
+            if (array[i] == value) return i;
+        }
+        return -1;
+    }
+
+
+    /*
+    int lastIndexOf(int value) {
         int index = -1;
         for (int i = 0; i < cursor; i++) {
             if (array[i] == value) {
@@ -154,6 +163,8 @@ public class MagicArray {
         return index;
     }
 
+     */
+
     // Удаление по значению
     boolean removeByValue(int value) {
         int index = indexOf(value);
@@ -162,19 +173,19 @@ public class MagicArray {
         return true;
     }
 
-//    // Удаление по значению 2
-//    boolean removeByValue2(int value) {
-//        for (int i = 0; i < cursor; i++) {
-//            if (array[i] == value) {
-//                for (int j = i; j < cursor - 1; j++) {
-//                    array[j] = array[j + 1];
-//                }
-//                cursor--;
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
+    // Удаление по значению 2
+    boolean removeByValue2(int value) {
+        for (int i = 0; i < cursor; i++) {
+            if (array[i] == value) {
+                for (int j = i; j < cursor - 1; j++) {
+                    array[j] = array[j + 1];
+                }
+                cursor--;
+                return true;
+            }
+        }
+        return false;
+    }
 
     // Найти все значения
     int[] findAllValues(int value) {
@@ -196,7 +207,6 @@ public class MagicArray {
         return valuesFind;
     }
 
-    // Вернуть магический массив
     public int[] toArray() {
         int[] result = new int[cursor];
         for (int i = 0; i < cursor; i++) {
@@ -222,4 +232,5 @@ public class MagicArray {
 9. Поиск по значению. Возвращать индекс первого вхождения элемента
 10. Индекс последнего вхождения
 11. Конструктор, принимающий обычный массив. Создать магический массив с элементами из этого массива
+12. Написать метод, который вернет массив,
  */

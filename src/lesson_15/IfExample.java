@@ -21,7 +21,6 @@ public class IfExample {
             System.out.println("Плохо");
         }
 
-
         // Random
 
         Random rand = new Random(); // - Подключение рандома.

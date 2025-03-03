@@ -22,11 +22,16 @@ public class DogApp {
             barriers[i] = random.nextInt(101) + 70;
         }
 
+        int counter = 0;
         for (int i = 0; i < dogs.length; i++) {
             for (int j = 0; j < barriers.length; j++) {
                 dogs[i].jumpBarrier(barriers[j]);
+                if (dogs[i].getMaxHeight() > barriers[j]) {
+                    counter++;
+                }
             }
-            System.out.println(dogs[i].getCounter());
+            System.out.println(counter);
+            counter = 0;
         }
     }
 }

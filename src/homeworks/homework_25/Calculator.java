@@ -1,6 +1,4 @@
-package homeworks.homework_24;
-
-import java.io.PipedWriter;
+package homeworks.homework_25;
 
 public class Calculator {
 

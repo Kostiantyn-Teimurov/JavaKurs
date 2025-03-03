@@ -23,6 +23,7 @@ public class Dog {
             System.out.println("Собака потренировалась");
         } else {
             jumpHeight = maxHeight;
+            System.out.println("Собака потренировалась, дальше не будет толку");
         }
     }
 

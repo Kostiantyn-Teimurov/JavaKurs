@@ -8,9 +8,6 @@ public class MagicArray {
     private int[] array; // null
     private int cursor; // по умолчанию = 0
 
-
-    // Методы, расширяющие функционал массива
-
     public MagicArray() {
         this.array = new int[10];
     }
@@ -25,8 +22,10 @@ public class MagicArray {
         }
     }
 
+    // Методы, расширяющие функционал массива
+
     // Добавление в массив одного элемента
-    void add(int value) {
+    public void add(int value) {
         // ПРОВЕРКА! Есть ли свободное место во внутреннем массиве
         // Если места нет - нужно добавить место
         if (cursor == array.length) {
@@ -38,7 +37,7 @@ public class MagicArray {
     }
 
     // Добавление в массив нескольких элементов
-    void add(int... numbers) {
+    public void add(int... numbers) {
         /*System.out.println("===============Секвенция=========");
         // c numbers я могу обращаться точно так же, как со ссылкой на массив интов
         System.out.println("Принял несколько int: " + numbers.length);
@@ -87,12 +86,12 @@ public class MagicArray {
     }
 
     // Текущее кол-во элементов в массиве
-    int size() {
+    public int size() {
         return cursor;
     }
 
     // Возвращает значение по индексу
-    int get(int index) {
+    public int get(int index) {
         // Проконтролировать входящий индекс!
 
         if (index >= 0 && index < cursor) {
@@ -107,7 +106,7 @@ public class MagicArray {
 
 
     // Удалить элемент по индексу
-    int remove(int index) {
+    public int remove(int index) {
         /*
         1. Проверка индекса на валидность
         2. Удалить значение по индексу
@@ -134,7 +133,7 @@ public class MagicArray {
     }
 
     // Поиск по значению. Возвращать индекс
-    int indexOf(int value) {
+    public int indexOf(int value) {
         for (int i = 0; i < cursor; i++) {
             if (array[i] == value) {
                 return i;
@@ -144,7 +143,7 @@ public class MagicArray {
     }
 
     // Индекс последнего вхождения
-    int lastIndexOf(int value) {
+    public int lastIndexOf(int value) {
         int index = -1;
         for (int i = 0; i < cursor; i++) {
             if (array[i] == value) {
@@ -155,7 +154,7 @@ public class MagicArray {
     }
 
     // Удаление по значению
-    boolean removeByValue(int value) {
+    public boolean removeByValue(int value) {
         int index = indexOf(value);
         if (index < 0) return false;
         remove(index);
@@ -177,7 +176,7 @@ public class MagicArray {
 //    }
 
     // Найти все значения
-    int[] findAllValues(int value) {
+    public int[] findAllValues(int value) {
         int count = 0;
 
         for (int i = 0; i < cursor; i++) {
@@ -205,7 +204,7 @@ public class MagicArray {
         return result;
     }
 
-    void test() {
+    public void test() {
         System.out.println(Arrays.toString(array));
     }
 }

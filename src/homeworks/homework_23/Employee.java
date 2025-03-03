@@ -4,7 +4,7 @@ public class Employee {
 
     private String name;
     private int age;
-    private int salary;
+    private double salary;
 
     public Employee(String name, int age, int salary) {
         this.name = name;
@@ -20,7 +20,7 @@ public class Employee {
         return age;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
@@ -38,6 +38,7 @@ public class Employee {
 
     public void info() {
         System.out.println("Name: " + name + ". Age: " + age + ". Salary: " + salary);
+        // %.2f - обрезать число до двух знаков
     }
 
 }

@@ -10,7 +10,7 @@ public class Dog {
     public Dog(String name, int jumpHeight) {
         this.name = name;
         this.jumpHeight = jumpHeight;
-        this.maxHeight = jumpHeight;
+        this.maxHeight = jumpHeight * 2;
     }
 
     private void jump() {
@@ -18,21 +18,21 @@ public class Dog {
     }
 
     private void train() {
-        if (maxHeight + 10 < jumpHeight * 2) {
-            maxHeight += 10;
+        if (jumpHeight + 10 < maxHeight) {
+            jumpHeight += 10;
             System.out.println("Собака потренировалась");
         } else {
-            maxHeight = jumpHeight * 2;
+            jumpHeight = maxHeight;
         }
     }
 
     public void jumpBarrier(int barrier) {
-        if (maxHeight > barrier) {
+        if (jumpHeight > barrier) {
             jump();
             return;
         }
-        if (jumpHeight * 2 > barrier) {
-            while (maxHeight < barrier) {
+        if (maxHeight > barrier) {
+            while (jumpHeight < barrier) {
                 train();
             }
             jump();

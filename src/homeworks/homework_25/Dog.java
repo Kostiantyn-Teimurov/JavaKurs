@@ -37,19 +37,20 @@ public class Dog {
         }
     }
 
-    public void jumpBarrier(int barrier) {
+    public boolean jumpBarrier(int barrier) {
         if (jumpHeight > barrier) {
             jump();
-            return;
+            return true;
         }
         if (maxHeight > barrier) {
             while (jumpHeight < barrier) {
                 train();
             }
             jump();
-            return;
+            return true;
         }
         System.out.println("Собака " + name + " не может взять барьер");
+        return false;
     }
 
     public String toString() {

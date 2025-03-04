@@ -6,7 +6,6 @@ public class Dog {
 
     private String name;
     private int jumpHeight;
-//    private int counter;
 
     public Dog(String name, int jumpHeight) {
         this.name = name;
@@ -16,16 +15,7 @@ public class Dog {
 
     private void jump() {
         System.out.println("Собака " + name + " прыгнула!");
-//        counter++;
     }
-
-    public int getMaxHeight() {
-        return maxHeight;
-    }
-
-    //    public int getCounter() {
-//        return counter;
-//    }
 
     private void train() {
         if (jumpHeight + 10 < maxHeight) {

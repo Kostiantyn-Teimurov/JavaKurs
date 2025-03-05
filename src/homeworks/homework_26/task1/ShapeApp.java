@@ -3,26 +3,17 @@ package homeworks.homework_26.task1;
 public class ShapeApp {
     public static void main(String[] args) {
 
-        Rectangle rectangle = new Rectangle();
-        Circle circle = new Circle();
+        Rectangle rectangle = new Rectangle("Rect1", 4.0, 3.0);
+        rectangle.setDimensions(5.0, 6.0);
+        rectangle.setColor("Red"); // унаследованный от Shape метод
+        rectangle.displayInfo(); // тоже унаследован
+        rectangle.calculateArea(); // это метод класса Rectangle
 
-        rectangle.setDimensions(5, 4);
-        circle.setRadius(7);
+        System.out.println("\n================");
 
-        rectangle.name = "Rectangle1";
-        circle.name = "Circle1";
-
-        rectangle.displayInfo();
-        circle.displayInfo();
-
-        rectangle.calculateArea();
-        circle.calculateArea();
-
-        rectangle.setColor("red");
-        circle.setColor("black");
-
-        rectangle.displayInfo();
-        circle.displayInfo();
-
+        Circle circle = new Circle("Circle1", "yellow", 5.0);
+        circle.displayInfo(); // Унаследован
+        circle.setRadius(10); // свои методы
+        circle.calculateArea(); // методы класса Circle
     }
 }

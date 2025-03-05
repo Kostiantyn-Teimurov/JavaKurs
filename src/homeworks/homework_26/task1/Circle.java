@@ -4,16 +4,27 @@ public class Circle extends Shape {
 
     private double radius;
 
+    public Circle(String name, double radius) {
+        super(name);
+        this.radius = radius;
+    }
+
+    public Circle(String name, String color, double radius) {
+        super(name, color);
+        this.radius = radius;
+    }
 
     public void setRadius(double radius) {
         this.radius = radius;
     }
 
-    public void calculateArea() {
-        if (radius < 0) {
-            System.out.println("Error");
-            return;
-        }
-        System.out.println(Math.PI * (radius * radius));
+    public double getRadius() {
+        return radius;
+    }
+
+    public double calculateArea() {
+        double area = Math.PI * radius * radius;
+        System.out.println("Area: " + area);
+        return area;
     }
 }

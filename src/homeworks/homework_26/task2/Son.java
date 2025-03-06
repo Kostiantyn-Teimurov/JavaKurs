@@ -1,6 +1,6 @@
 package homeworks.homework_26.task2;
 
-public class Son extends Parents {
+public class Son extends Family {
 
     private String name;
     private String temper;

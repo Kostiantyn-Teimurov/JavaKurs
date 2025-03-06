@@ -1,6 +1,6 @@
 package testProtected;
 
-import lesson_23.Cat;
+import lessons.lesson_23.Cat;
 
 public class Lesson_23Main {
     public static void main(String[] args) {

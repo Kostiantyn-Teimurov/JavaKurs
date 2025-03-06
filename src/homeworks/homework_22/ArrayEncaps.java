@@ -1,7 +1,5 @@
 package homeworks.homework_22;
 
-import lesson_22.MagicArray;
-
 import java.util.Arrays;
 
 public class ArrayEncaps {
@@ -23,8 +21,6 @@ public class ArrayEncaps {
         int[] fromMagic = magic.toArray();
         System.out.println(fromMagic.length);
         System.out.println(Arrays.toString(fromMagic));
-
-
 
 
     }

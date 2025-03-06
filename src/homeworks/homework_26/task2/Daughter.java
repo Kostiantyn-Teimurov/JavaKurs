@@ -1,6 +1,6 @@
 package homeworks.homework_26.task2;
 
-public class Daughter extends Parents {
+public class Daughter extends Family {
     private String name;
     private String temper;
     private int countFriends;

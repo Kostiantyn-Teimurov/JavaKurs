@@ -2,15 +2,15 @@ package homeworks.homework_28.task1;
 
 public class SportsmanPro extends SportsmanAmateur {
 
-    @Override
-    public void run() {
-        int speed = 25;
-        relax();
+    {
+        typeRunner = "Профи";
     }
 
-    @Override
-    protected void relax() {
-        System.out.println("Нужно отдохнуть 5 минут!");
+    public SportsmanPro() {
+        super(25, 5);
     }
 
+    public SportsmanPro(int runSpeed, int restTime) {
+        super(runSpeed, restTime);
+    }
 }

@@ -1,14 +1,18 @@
 package homeworks.homework_28.task1;
 
 public class SportsmanAmateur extends Man {
-    @Override
-    public void run() {
-        int speed = 15;
-        relax();
+
+    {
+        typeRunner = "Любитель";
     }
 
-    @Override
-    protected void relax() {
-        System.out.println("Нужно отдохнуть 10 минут!");
+    public SportsmanAmateur() {
+        super(15, 10);
     }
+
+    public SportsmanAmateur(int runSpeed, int restTime) {
+        super(runSpeed, restTime);
+    }
+
+
 }

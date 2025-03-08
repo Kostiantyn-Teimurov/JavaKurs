@@ -14,27 +14,11 @@ package lessons.lesson_28.animals;
 public class CastingExample {
     public static void main(String[] args) {
 
-        // Восходящее и нисходящее преобразование
+        // Восходящие и нисходящие преобразования
 
         // Восходящее образование происходит автоматически
 
-        Animal animal = new Cat(); // тип Cat автоматически преобразуется к типу Animal
-
-        /*
-        !!! ВАЖНО !!!
-        Тип ссылочной переменной определяет:
-        1. Ссылки на объекты каких типов могут храниться в этой переменной
-        2. Список методов, которые можно вызвать обращаясь к этой переменной
-         */
-
-        // Недоступны методы класса Cat. Доступны только Animal Object
-        // Ссылочная может хранить объект своего класса или любого ребенка.
-        // animal.eat() - недоступно
-
-
-        // Какая реализация будет вызвана - определяется типом объекта, который привязан по этой ссылке
-        // У кота есть такой метод, поэтому реализация будет у класса Cat
-        animal.voice();
+        Animal animal = getAnimal();
 
         Animal animal1 = new Hamster(); // неявное автоматическое преобразование Hamster к типу Animal
 
@@ -58,8 +42,65 @@ public class CastingExample {
 
         test(new Cat());
 
+        int intx = 10;
+        double doubleX = intx; // неявное
+        System.out.println(doubleX);
+
+        intx = (int) doubleX; // явное
+
+        Animal animalD = new Dog(); // Upcasting
+        Dog dog = (Dog) animalD; // Downcasting - Явное нисходящее преобразование
+
+        dog.bark();
+
+        Animal animalCat = new Cat();
+
+        // Ошибка ClassCastException. Попытались привести объект к неверному типу
+//        Dog dog1 = (Dog) animalCat;
+//        dog1.bark();
 
 
+        System.out.println("=============");
+        for (int i = 0; i < animals.length; i++) {
+            Animal currentAnimal = animals[i];
+            currentAnimal.voice();
+
+            //  Можно проверить тип объекта для избежания ошибок перед downcasting
+            if (currentAnimal instanceof Cat) {
+                System.out.println("В ячейке " + i + " is a Cat type");
+                Cat catLink = (Cat) currentAnimal;
+                catLink.eat(); // специфический метод кота
+            }
+
+            if (currentAnimal instanceof Dog) {
+                Dog dogLink = (Dog) currentAnimal;
+                dogLink.bark(); // метод класса Dog
+            }
+
+        }
+
+
+    }
+
+    private static Animal getAnimal() {
+        Animal animal = new Cat(); // тип Cat автоматически преобразуется к типу Animal
+
+        /*
+        !!! ВАЖНО !!!
+        Тип ссылочной переменной определяет:
+        1. Ссылки на объекты каких типов могут храниться в этой переменной
+        2. Список методов, которые можно вызвать обращаясь к этой переменной
+         */
+
+        // Недоступны методы класса Cat. Доступны только Animal Object
+        // Ссылочная может хранить объект своего класса или любого ребенка.
+        // animal.eat() - недоступно
+
+
+        // Какая реализация будет вызвана - определяется типом объекта, который привязан по этой ссылке
+        // У кота есть такой метод, поэтому реализация будет у класса Cat
+        animal.voice();
+        return animal;
     }
 
     public static void test(Animal animal) {

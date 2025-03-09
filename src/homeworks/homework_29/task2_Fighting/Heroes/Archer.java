@@ -4,7 +4,7 @@ public class Archer extends GameCharacter {
 
     {
         typeCharacter = "Archer";
-        typeWeapon = "Bow";
+        typeWeapon = "Bow"; // for HomeWork
         bowSkill = 1.1;
     }
 
@@ -17,6 +17,7 @@ public class Archer extends GameCharacter {
 //        this.bowSkill = bowSkill;
 //    }
 
+    // for HomeWork
     @Override
     public void attack() {
         System.out.printf("%s attacks with a %s\n", typeCharacter, typeWeapon);

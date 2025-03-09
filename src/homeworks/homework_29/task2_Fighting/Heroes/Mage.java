@@ -4,7 +4,7 @@ public class Mage extends GameCharacter {
 
     {
         typeCharacter = "Mage";
-        typeWeapon = "Magic";
+        typeWeapon = "Magic"; // for HomeWork
         magicSkill = 1.1;
     }
 
@@ -17,6 +17,7 @@ public class Mage extends GameCharacter {
 //        this.magicSkill = magicSkill;
 //    }
 
+    // for HomeWork
     @Override
     public void attack() {
         System.out.printf("%s attacks with a %s\n", typeCharacter, typeWeapon);

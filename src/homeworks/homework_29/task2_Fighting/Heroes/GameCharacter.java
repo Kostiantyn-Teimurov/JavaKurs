@@ -15,7 +15,7 @@ public abstract class GameCharacter {
     protected double fistsSkill = 1.0;
 
     protected String typeCharacter;
-    protected String typeWeapon;
+    protected String typeWeapon;  // for HomeWork
 
     protected Weapon weapon;
 
@@ -25,6 +25,7 @@ public abstract class GameCharacter {
         weapon = new Fists();
     }
 
+    // for HomeWork
     public GameCharacter(int level, int attackPower) {
         this.level = level;
         this.attackPower = attackPower;
@@ -32,6 +33,8 @@ public abstract class GameCharacter {
 
     abstract void attack();
 
+
+    // !!!!!!!!!!!!!!!!!!!!!!!!  My Project    !!!!!!!!!!!!!!!!
 
     // Experience logic
 

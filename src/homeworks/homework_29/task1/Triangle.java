@@ -11,6 +11,13 @@ public class Triangle extends Shape {
         this.c = c;
     }
 
+
+    private boolean isValidSides(double sideA, double sideB, double sideC) {
+        return sideA < sideB + sideC &&
+                sideB < sideA + sideC &&
+                sideC < sideA + sideB;
+    }
+
     @Override
     public double calculateArea() {
         double p = perimeter / 2;

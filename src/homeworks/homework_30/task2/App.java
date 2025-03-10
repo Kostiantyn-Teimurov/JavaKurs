@@ -3,13 +3,15 @@ package homeworks.homework_30.task2;
 public class App {
     public static void main(String[] args) {
 
-        PaymentSystem account001 = new AccountEuro1();
-        PaymentSystem account002 = new AccountEuro2();
-        PaymentSystem account003 = new AccountDollars1();
-        PaymentSystem account004 = new AccountDollars2();
+        PaymentSystem account001 = new BankAccount(100, "001");
+        PaymentSystem account002 = new BankAccount(-1, "002");
+        PaymentSystem account003 = new ElectronicWallet("003");
+        PaymentSystem account004 = new ElectronicWallet("004");
 
         account001.checkBalance();
+        account002.checkBalance();
         account003.checkBalance();
+        account004.checkBalance();
 
         account001.withdrawMoney(100);
         account003.withdrawMoney(0);

@@ -1,11 +1,14 @@
 package homeworks.homework_30.task2;
 
-public abstract class ElectronicWallet implements PaymentSystem {
+public class ElectronicWallet implements PaymentSystem {
 
-    protected double dollars;
-    protected String typeMoney = "$";
-    protected String accountNumber;
+    private double dollars;
+    private final String typeMoney = "$";
+    private final String accountNumber;
 
+    public ElectronicWallet(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 
     @Override
     public void withdrawMoney(double amount) {

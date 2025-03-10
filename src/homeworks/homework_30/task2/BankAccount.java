@@ -1,11 +1,19 @@
 package homeworks.homework_30.task2;
 
-public abstract class BankAccount implements PaymentSystem {
+public class BankAccount implements PaymentSystem {
 
-    protected double eur;
-    protected String typeMoney = "€";
-    protected String accountNumber;
+    private double eur;
+    private final String typeMoney = "€";
+    private final String accountNumber;
 
+
+    public BankAccount(double eur, String accountNumber) {
+        if (eur < 0) {
+            this.eur = 0;
+        }
+        this.eur = eur;
+        this.accountNumber = accountNumber;
+    }
 
     @Override
     public void withdrawMoney(double amount) {

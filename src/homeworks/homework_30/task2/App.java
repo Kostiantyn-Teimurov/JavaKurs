@@ -3,8 +3,8 @@ package homeworks.homework_30.task2;
 public class App {
     public static void main(String[] args) {
 
-        PaymentSystem account001 = new BankAccount(100, "001");
-        PaymentSystem account002 = new BankAccount(-1, "002");
+        PaymentSystem account001 = new BankAccount("001");
+        PaymentSystem account002 = new BankAccount("002");
         PaymentSystem account003 = new ElectronicWallet("003");
         PaymentSystem account004 = new ElectronicWallet("004");
 

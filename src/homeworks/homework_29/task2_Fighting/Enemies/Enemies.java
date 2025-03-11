@@ -7,8 +7,8 @@ public abstract class Enemies {
     protected int exp;
     protected int level;
 
-    protected int resistancePhys = 0;
-    protected int resistanceMage = 0;
+    protected int resistancePhys;
+    protected int resistanceMage;
 
     protected String typeEnemy;
 

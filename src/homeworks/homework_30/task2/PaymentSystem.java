@@ -10,7 +10,11 @@ public interface PaymentSystem {
 
     void transferMoney(PaymentSystem account, double sum);
 
-    String getTypeMoney();
+    String getCurrency();
 
     String getAccountNumber();
+
+    // Получение курса Валюта счета к евро
+    double getCourseToEuro();
+
 }

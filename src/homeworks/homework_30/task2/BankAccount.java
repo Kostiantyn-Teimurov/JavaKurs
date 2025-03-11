@@ -1,81 +1,48 @@
 package homeworks.homework_30.task2;
 
-public class BankAccount implements PaymentSystem {
+public class BankAccount extends Accounts {
 
-    private double eur;
-    private final String typeMoney = "€";
-    private final String accountNumber;
-
-
-    public BankAccount(double eur, String accountNumber) {
-        if (eur < 0) {
-            this.eur = 0;
-        }
-        this.eur = eur;
+    public BankAccount(String accountNumber) {
+        super(accountNumber);
+        currency = "€";
         this.accountNumber = accountNumber;
     }
 
-    @Override
-    public void withdrawMoney(double amount) {
-        if (amount <= 0) {
-            System.out.println("Некорректная операция!");
-            return;
-        }
-        if (amount > eur) {
-            System.out.println("Недостаточно средств! Пополните баланс.");
-            return;
-        }
-        eur -= amount;
-        System.out.printf("Счёт: %s.\nСнято: %.2f%s. Остаток: %.2f%s\n", accountNumber, amount, typeMoney, eur, typeMoney);
-        System.out.println("=============================");
-    }
+    // Вывод денег - сумма которую переводим - всегда в валюте нашего счета.
+    // Проверяем валюту счета получателя. Высчитываем курс пересчета
+    // отправляем получателю сумму к валюте счета получателя.
 
     @Override
-    public void depositTransfer(double amount) {
-        if (amount <= 0) {
-            System.out.println("Некорректная операция");
-            return;
-        }
-        eur += amount;
-        System.out.printf("Счёт %s пополнен: +%.2f%s. Баланс: %.2f%s\n", accountNumber, amount, typeMoney, eur, typeMoney);
-        System.out.println("=============================");
-    }
-
-    @Override
-    public void checkBalance() {
-        System.out.printf("Счёт: %s. Баланс: %.2f%s\n", accountNumber, eur, typeMoney);
-    }
-
-    @Override
-    public void transferMoney(PaymentSystem account, double sum) {
-        if (eur < sum) {
-            System.out.println("Недостаточно средств!");
-            return;
-        }
-        if (sum <= 0) {
-            System.out.println("Некорректный ввод!");
+    public void transferMoney(PaymentSystem account, double amountEur) {
+        if (amountEur > getBalance()) {
+            System.out.printf("Недостаточно средств! Transfer %.2f | balance: %.2f\n", amountEur, getBalance());
             return;
         }
 
-        withdrawMoney(sum);
-        double curse = 1;
-
-        if (account.getTypeMoney().equals("$")) {
-            curse = 1.08;
+        if (account.getCurrency().equals("€")) {
+            // Перевод на евровый счет (конвертация не нужна)
+            withdrawMoney(amountEur);
+            account.depositTransfer(amountEur);
+            System.out.printf("Успех! Перевод (%s -> %s) %.2f EUR завершен\n", accountNumber, account.getAccountNumber(), amountEur);
+            return;
         }
-        account.depositTransfer(sum * curse);
-        System.out.printf("Перевод со счёта %s на Счёт %s. Сумма: %.2f. Курс: 1 : %.2f\n", accountNumber, account.getAccountNumber(), sum, curse);
-        System.out.println("===========================");
 
+        if (account.getCurrency().equals("$")) {
+            // Конвертировать евро в доллары
+
+            double amountDollars = amountEur / account.getCourseToEuro();
+
+            withdrawMoney(amountEur);
+            account.depositTransfer(amountDollars);
+
+            System.out.printf("Успех! Перевод (%s -> %s) %.2f EUR -> %.2f завершен\n",
+                    accountNumber, account.getAccountNumber(), amountEur, amountDollars);
+        }
     }
 
     @Override
-    public String getTypeMoney() {
-        return typeMoney;
+    public double getCourseToEuro() {
+        return 1;
     }
 
-    @Override
-    public String getAccountNumber() {
-        return accountNumber;
-    }
 }

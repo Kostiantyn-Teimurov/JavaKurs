@@ -7,12 +7,29 @@ public class MyArrayListApp {
 
         MyArrayList<Integer> myArrayInts = new MyArrayList<>();
 
+        Integer[] arr = myArrayInts.toArray();
+        System.out.println(arr);
+
+        System.out.println(myArrayInts);
+
         System.out.println(myArrayInts.isEmpty());
 
-        myArrayInts.add(1);
+//        myArrayInts.add("1"); // Обеспечивается безопасность типов на этапе компиляции.
         myArrayInts.add(0);
         myArrayInts.add(3426);
         myArrayInts.add(-3426);
+
+        Integer[] array = myArrayInts.toArray();
+
+        // Стирание типов при работе с дженериками
+        // Type Erasure
+        /*
+        Во время компиляции:
+        1. Проверка типов.
+        2. Стирание типов - удаление информации о параметрах типов
+        3. Добавление приведения типов, где это необходимо
+         */
+
 
         System.out.println(Arrays.toString(myArrayInts.toArray()));
 

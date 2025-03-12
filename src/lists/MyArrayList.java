@@ -1,6 +1,8 @@
 package lists;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Objects;
 
 
 public class MyArrayList<T> implements MyList<T> {
@@ -49,6 +51,7 @@ public class MyArrayList<T> implements MyList<T> {
     }
 
     // Динамическое расширение массива
+    @SuppressWarnings("unchecked")
     private void expandArray() {
         System.out.println("Расширяем массив! Курсор = " + cursor);
         // 1
@@ -86,10 +89,7 @@ public class MyArrayList<T> implements MyList<T> {
             return array[index];
         }
 
-        // Fixme Указать место в коде с ошибкой / проблемой
-        // Код, если индекс не корректный. Хорошего решения нет
         return null;
-        // todo Поправить обработку некорректного индекса
     }
 
 
@@ -109,7 +109,6 @@ public class MyArrayList<T> implements MyList<T> {
             return value;
         } else {
             // Индекс не валидный
-            // todo поправить возвращаемое значение
             return null;
         }
 
@@ -128,7 +127,10 @@ public class MyArrayList<T> implements MyList<T> {
     // Поиск по значению. Возвращать индекс
     public int indexOf(T value) {
         for (int i = 0; i < cursor; i++) {
-            if (array[i] == value) {
+
+            // null-безопасное сравнение
+            if (Objects.equals(array[i], value)) {
+//            if (array[i].equals(value)) { // Если null - будет ОШИБКА
                 return i;
             }
         }
@@ -139,17 +141,16 @@ public class MyArrayList<T> implements MyList<T> {
     // Индекс последнего вхождения
     public int lastIndexOf(T value) {
         for (int i = cursor - 1; i >= 0; i--) {
-            if (array[i] == value) return i;
+            // Безопасное сравнение, если null. null-безопасный метод сравнение
+            if (Objects.equals(array[i], value)) return i;
+//            if (array[i].equals(value)) return i;
         }
         return -1;
     }
 
     @Override
     public boolean contains(T value) {
-        if (indexOf(value) == -1) {
-            return false;
-        }
-        return true;
+        return indexOf(value) >= 0;
     }
 
     @Override
@@ -158,6 +159,7 @@ public class MyArrayList<T> implements MyList<T> {
         return false;
     }
 
+    // Переписать значение по указанному индексу
     @Override
     public void set(int index, T value) {
         if (index >= 0 && index < cursor) {
@@ -165,9 +167,31 @@ public class MyArrayList<T> implements MyList<T> {
         }
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public T[] toArray() {
-        T[] result = (T[]) new Object[cursor];
+        /*
+        1. Создать массив размерностью cursor (кол-во значимых элементов)
+        2. Пройтись по внутреннему массиву и скопировать все элементы в новый (до курсора)
+        3. Вернуть ссылку на новый массив
+         */
+
+        // Взять какой-то объект из моего массива и узнать с помощью Рефлексии тип этого объекта.
+        // И потом с помощью Рефлексии я могу создать массив этого типа
+
+        if (cursor == 0) return null;
+
+        Class<T> clazz = (Class<T>) array[0].getClass();
+        System.out.println("clazz: " + clazz);
+
+        // Создаю массив того же типа, что и 0-й элемент.
+        T[] result = (T[]) Array.newInstance(clazz, cursor);
+
+        // TODO Здесь будет ОШИБКА
+//        T[] result = (T[]) new Object[cursor];
+//        T[] res = new T[11]; // - Не можем так сделать, потому что там тип Object
+//        T obj = new T();
+
         for (int i = 0; i < cursor; i++) {
             result[i] = array[i];
         }

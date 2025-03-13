@@ -5,6 +5,9 @@ public class PairApp {
 
         Pair<String> pair = new Pair<>("Hello", "Java");
 
+        System.out.println(pair);
+        System.out.println(pair.toString());
+
         System.out.println(pair.getFirst());
         System.out.println(pair.getSecond());
 

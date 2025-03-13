@@ -31,4 +31,11 @@ public class Pair<T> {
         x2 = y;
     }
 
+    @Override
+    public String toString() {
+        return "Pair{" +
+                "x1 = " + x1 +
+                ", x2 = " + x2 +
+                '}';
+    }
 }

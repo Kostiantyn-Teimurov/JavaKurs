@@ -1,4 +1,4 @@
-package lessons.lesson_33.persons;
+package lessons.lesson_34.person;
 
 public class Person {
 
@@ -30,6 +30,7 @@ public class Person {
     6. Первый символ - должна быть буква
      */
     public boolean isEmailValid(String email) {
+        if (email == null) return false;
         // 1.
         int indexAt = email.indexOf('@');
         int lastAt = email.lastIndexOf('@');
@@ -86,30 +87,32 @@ public class Person {
      */
 
     public boolean isPasswordValid(String password) {
-        // 1.
-        boolean passwordLength = password.length() >= 8;
+        if (password == null || password.length() < 8) return false;
 
         // 2, 3, 4, 5
         boolean isDigit = false;
         boolean isLowerCase = false;
         boolean isUpperCase = false;
         boolean isSpecSymbol = false;
+
+        // альтернативный способ объявления переменных
+        boolean[] result = new boolean[4]; // false, false, false, false
+
         for (char ch : password.toCharArray()) {
-            if (Character.isDigit(ch)) {
-                isDigit = true;
-            }
-            if (Character.isLowerCase(ch)) {
-                isLowerCase = true;
-            }
-            if (Character.isUpperCase(ch)) {
-                isUpperCase = true;
-            }
-            if (ch == '!' || ch == '%' || ch == '$' || ch == '@' || ch == '&' || ch == '*' || ch == '('
-                    || ch == ')' || ch == '[' || ch == ']' || ch == ',' || ch == '.' || ch == '_' || ch == '-') {
-                isSpecSymbol = true;
-            }
+            if (Character.isDigit(ch)) isDigit = true;
+            if (Character.isLowerCase(ch)) isLowerCase = true;
+            if (Character.isUpperCase(ch)) isUpperCase = true;
+            if ("!%$@&*()[],.-_".indexOf(ch) != -1) isSpecSymbol = true;
+
+//            if("!%$@&*()[],.-_".contains("" + ch)) isSpecSymbol = true;
+//            if("!%$@&*()[],.-_".contains(String.valueOf(ch))) isSpecSymbol = true;
+
+//            if (ch == '!' || ch == '%' || ch == '$' || ch == '@' || ch == '&' || ch == '*' || ch == '('
+//                    || ch == ')' || ch == '[' || ch == ']' || ch == ',' || ch == '.' || ch == '_' || ch == '-') {
+//                isSpecSymbol = true;
+//            }
         }
-        return passwordLength && isDigit && isLowerCase && isUpperCase && isSpecSymbol;
+        return isDigit && isLowerCase && isUpperCase && isSpecSymbol;
     }
 
 

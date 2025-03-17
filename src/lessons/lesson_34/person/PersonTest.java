@@ -2,6 +2,7 @@ package lessons.lesson_34.person;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -46,6 +47,7 @@ class PersonTest {
         3.1. поле email у persona != Не валидный email
         3.2. Значение поля email осталось прежним
      */
+    // Здесь лучше сделать поток данных (Stream) и в него указывать кучу не валидных email-ов
     @ParameterizedTest
     @ValueSource(strings = {"notValid@@mail.com", "notValid@mail.com.", "notValid@mailco..m", "notVali.d@mailcom", "notValid@@mailcom",
             "1notValid@@mail.com", "not", "notV%alid@@mail.com"})
@@ -80,24 +82,22 @@ class PersonTest {
     }
 
 
-    // TODO так смысл есть?
-    @ParameterizedTest
-    @MethodSource("testDataValidEmailAndPassword")
-    void testValidEmailAndPassword(String validEmail, String validPassword) {
-        person.setEmail(validEmail);
-        person.setPassword(validPassword);
-        System.out.println(person);
-
-        assertEquals(validEmail, person.getEmail());
-        assertEquals(validPassword, person.getPassword());
-    }
-
-    static Stream<Arguments> testDataValidEmailAndPassword() {
-        return Stream.of(
-                Arguments.of("valid@test.com", "ValidPassword333_"),
-                Arguments.of("test1112@test.com.de", "ValidPassword%333")
-        );
-    }
-
-
+    // Не надо смешивать проверки!
+//    @ParameterizedTest
+//    @MethodSource("testDataValidEmailAndPassword")
+//    void testValidEmailAndPassword(String validEmail, String validPassword) {
+//        person.setEmail(validEmail);
+//        person.setPassword(validPassword);
+//        System.out.println(person);
+//
+//        assertEquals(validEmail, person.getEmail());
+//        assertEquals(validPassword, person.getPassword());
+//    }
+//
+//    static Stream<Arguments> testDataValidEmailAndPassword() {
+//        return Stream.of(
+//                Arguments.of("valid@test.com", "ValidPassword333_"),
+//                Arguments.of("test1112@test.com.de", "ValidPassword%333")
+//        );
+//    }
 }

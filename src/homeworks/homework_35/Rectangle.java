@@ -3,6 +3,7 @@ package homeworks.homework_35;
 import lists.MyArrayList;
 import lists.MyList;
 
+import java.util.Iterator;
 import java.util.Objects;
 
 public class Rectangle {
@@ -21,13 +22,35 @@ public class Rectangle {
     }
 
     public static void removeDuplicates(MyList<Rectangle> listRectangles, Rectangle rectangleToRemove) {
-        for (int i = 0; i < listRectangles.size(); i++) {
+//        for (int i = 0; i < listRectangles.size(); i++) {
+        for (int i = listRectangles.size() - 1; i >= 0; i--) {
             if (listRectangles.get(i).equals(rectangleToRemove)) {
-                listRectangles.remove(i);
-                i--;
+                listRectangles.remove(rectangleToRemove);
+//                i--;
             }
         }
     }
+
+//    public static void removeDuplicates1(MyList<Rectangle> listRectangles, Rectangle rectangleToRemove) {
+//        while (listRectangles.remove(rectangleToRemove))
+//        while (listRectangles.contains(rectangleToRemove)) {
+//            listRectangles.remove(rectangleToRemove);
+//        }
+//    }
+
+
+
+
+
+//    public static void removeDuplicates(MyList<Rectangle> listRectangles, Rectangle rectangleToRemove) {
+//        Iterator<Rectangle> iterator = listRectangles.iterator();
+//        while (iterator.hasNext()) {
+//            Rectangle rect = iterator.next();
+//            if (rect.equals(rectangleToRemove)) {
+//                iterator.remove();
+//            }
+//        }
+//    }
 
 //    public static void removeDuplicates(MyList<Rectangle> listRectangles, Rectangle rectangleToRemove) {
 //        for (Rectangle currentRectangle : listRectangles) {

@@ -6,9 +6,9 @@ import java.util.Comparator;
 public class Sportsman implements Comparable<Sportsman> {
     private String name;
     private int age;
-    private int score;
+    private double score;
 
-    public Sportsman(String name, int age, int score) {
+    public Sportsman(String name, int age, double score) {
         this.name = name;
         this.age = age;
         this.score = score;
@@ -35,7 +35,7 @@ public class Sportsman implements Comparable<Sportsman> {
         this.age = age;
     }
 
-    public int getScore() {
+    public double getScore() {
         return score;
     }
 
@@ -51,7 +51,7 @@ public class Sportsman implements Comparable<Sportsman> {
     public static void main(String[] args) {
         Sportsman[] sportsmen = new Sportsman[5];
 
-        sportsmen[0] = new Sportsman("Name1", 20, 100);
+        sportsmen[0] = new Sportsman("Name1", 20, 100.3);
         sportsmen[1] = new Sportsman("Name3", 30, 200);
         sportsmen[2] = new Sportsman("Name1", 27, 150);
         sportsmen[3] = new Sportsman("Name2", 35, 140);
@@ -69,6 +69,10 @@ public class Sportsman implements Comparable<Sportsman> {
                 return s1.getAge() - s2.getAge();
             }
         });
+        System.out.println(Arrays.toString(sportsmen));
+
+
+        Arrays.sort(sportsmen, (s1, s2) -> Integer.compare(s1.getAge(), s2.getAge()));
         System.out.println(Arrays.toString(sportsmen));
 
     }

@@ -11,6 +11,8 @@ public class Task1 {
 
         System.out.println(retainLists(list1, list2));
 
+        System.out.println("Начальный список: " + list1);
+
         List<String> strings1 = new ArrayList<>(List.of("1", "2", "Hello", "", "Hi"));
         List<String> strings2 = new ArrayList<>(List.of("1", "2", "Hello2", ".", "Hi"));
 
@@ -21,8 +23,13 @@ public class Task1 {
     }
 
     public static <T> List<T> retainLists(List<T> list1, List<T> list2) {
-        list1.retainAll(list2);
-        return list1;
+        List<T> result = new ArrayList<>(list1);
+        result.retainAll(list2);
+        return result;
+
+        // Так первый список изменится - нам это не нужно
+//        list1.retainAll(list2);
+//        return list1;
     }
 
 

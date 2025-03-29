@@ -3,7 +3,7 @@ package homeworks.homework_43;
 import java.util.*;
 
 public class Task2 {
-    final static int COUNT_ELEMENTS = 50000;
+    final static int COUNT_ELEMENTS = 150000;
     static Random random = new Random();
 
 

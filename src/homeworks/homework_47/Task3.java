@@ -2,6 +2,7 @@ package homeworks.homework_47;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Task3 {
@@ -26,11 +27,24 @@ public class Task3 {
         ));
 
         List<Person> filteredPeople = people.stream()
+                .filter(Objects::nonNull)
                 .filter(p -> p.getAge() > 25)
-                .filter(p -> p.getCity().equals("Dortmund"))
+                .filter(p -> Objects.nonNull(p.getCity()))
+                .filter(p -> p.getCity().equalsIgnoreCase("Dortmund"))
                 .collect(Collectors.toList());
 
+
         System.out.println(filteredPeople);
+    }
+
+    public static List<Person> filterPersons(List<Person> persons, int age, String cite) {
+        return persons.stream()
+                .filter(Objects::nonNull)
+                .filter(p -> p.getAge() > 25)
+                .filter(p -> Objects.nonNull(p.getCity()))
+                .filter(p -> p.getCity().equalsIgnoreCase("Dortmund"))
+
+                .collect(Collectors.toList());
     }
 
 

@@ -27,12 +27,27 @@ public class Task2 {
                 "\n" +
                 "Например, старше 25 лет и проживающих в городе \"Berlin\"";
 
+        String test = "Hello";
+        System.out.println(test.substring(0, 1));
+        System.out.println(test.endsWith("llo"));
+        System.out.println(test.endsWith("ll"));
+        System.out.println(test.startsWith("H"));
+
+        System.out.println(test.contains("ell"));
+
 
         List<String> listStrings = Arrays.asList(text.replaceAll("[\n,\"]", "").split(" "));
         System.out.println(listStrings);
 
         List<String> filteredStringsList = listStrings.stream()
-                .filter(s -> s.charAt(0) != 'A')
+                // 1. Проверяет заканчивается ли строка на другую строку
+//                .filter(s -> s.substring(0, 1).equalsIgnoreCase("A"))
+
+                // 2.
+                .filter(s -> s.toUpperCase().startsWith("A"))
+
+                // 3.
+//                .filter(s -> s.charAt(0) != 'A')
 //                .filter(s -> s.charAt(0) == 'A')
                 .sorted()
                 .collect(Collectors.toList());

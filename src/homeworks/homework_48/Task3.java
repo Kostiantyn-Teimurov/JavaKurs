@@ -17,6 +17,7 @@ public class Task3 {
 
         System.out.println(integers2);
 
+        // 2. variant
         List<Integer> integerList = integers.stream()
                 .filter(e -> e % 2 == 0)
                 .peek(System.out::println)

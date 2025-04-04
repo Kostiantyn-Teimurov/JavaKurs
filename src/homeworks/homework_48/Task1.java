@@ -20,7 +20,9 @@ public class Task1 {
 
         List<Integer> integerList1 = integerList.stream()
                 .filter(i -> i > 10)
-                .sorted(Comparator.comparing(i -> i % 10))
+//                .sorted(Comparator.comparing(i -> i % 10))
+//                .sorted((i1, i2) -> Integer.compare(i1 % 10, i2 % 10))
+                .sorted(Comparator.<Integer>comparingInt(i -> i % 10).thenComparing(Comparator.reverseOrder()))
                 .collect(Collectors.toList());
 
         System.out.println(integerList1);

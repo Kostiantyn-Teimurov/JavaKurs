@@ -2,6 +2,7 @@ package homeworks.homework_48;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Task3 {
 
@@ -15,5 +16,11 @@ public class Task3 {
                 .forEach(integer -> integers2.add(integer * 2));
 
         System.out.println(integers2);
+
+        List<Integer> integerList = integers.stream()
+                .filter(e -> e % 2 == 0)
+                .peek(System.out::println)
+                .map(i -> i * 2)
+                .collect(Collectors.toList());
     }
 }
